@@ -61,7 +61,7 @@ function CodeTab({ code, setCode, settings }: Props) {
           className="bg-black text-white flex items-center justify-center hover:text-black hover:bg-gray-100 cursor-pointer rounded-lg text-sm p-2.5"
           onClick={copyCode}
         >
-          Copy Code <FaCopy className="ml-2" />
+          复制代码 <FaCopy className="ml-2" />
         </span>
         <Button
           onClick={doOpenInCodepenio}

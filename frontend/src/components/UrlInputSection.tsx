@@ -60,9 +60,9 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
 
   return (
     <div className="w-[400px] gap-y-2 flex flex-col">
-      <div className="text-gray-500 text-sm">Or screenshot a URL...</div>
+      <div className="text-gray-500 text-sm">或输入截屏图片超链接地址...</div>
       <Input
-        placeholder="Enter URL"
+        placeholder="输入链接地址"
         onChange={(e) => setReferenceUrl(e.target.value)}
         value={referenceUrl}
       />
@@ -71,7 +71,7 @@ export function UrlInputSection({ doCreate, screenshotOneApiKey }: Props) {
         disabled={isLoading}
         className="bg-slate-400"
       >
-        {isLoading ? "Capturing..." : "Capture"}
+        {isLoading ? "捕获中..." : "捕获"}
       </Button>
     </div>
   );

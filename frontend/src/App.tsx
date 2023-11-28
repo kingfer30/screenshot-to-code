@@ -24,7 +24,6 @@ import { PicoBadge } from "./components/PicoBadge";
 import { OnboardingNote } from "./components/OnboardingNote";
 import { usePersistedState } from "./hooks/usePersistedState";
 import { UrlInputSection } from "./components/UrlInputSection";
-import TermsOfServiceDialog from "./components/TermsOfServiceDialog";
 import html2canvas from "html2canvas";
 import { USER_CLOSE_WEB_SOCKET_CODE } from "./constants";
 import CodeTab from "./components/CodeTab";
@@ -149,22 +148,10 @@ function App() {
     setUpdateInstruction("");
   }
 
-  const handleTermDialogOpenChange = (open: boolean) => {
-    setSettings((s) => ({
-      ...s,
-      isTermOfServiceAccepted: !open,
-    }));
-  };
-
   return (
     <div className="mt-2">
       {IS_RUNNING_ON_CLOUD && <PicoBadge />}
-      {IS_RUNNING_ON_CLOUD && (
-        <TermsOfServiceDialog
-          open={!settings.isTermOfServiceAccepted}
-          onOpenChange={handleTermDialogOpenChange}
-        />
-      )}
+      
 
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-96 lg:flex-col">
         <div className="flex grow flex-col gap-y-2 overflow-y-auto border-r border-gray-200 bg-white px-6">
@@ -174,11 +161,11 @@ function App() {
           </div>
           {appState === AppState.INITIAL && (
             <h2 className="text-sm text-gray-500 mb-2">
-              Drag & drop a screenshot to get started.
+              拖放屏幕截图即可开始
             </h2>
           )}
 
-          {IS_RUNNING_ON_CLOUD && !settings.openAiApiKey && <OnboardingNote />}
+          {!settings.openAiApiKey && <OnboardingNote />}
 
           {(appState === AppState.CODING ||
             appState === AppState.CODE_READY) && (
@@ -203,34 +190,34 @@ function App() {
                 <div>
                   <div className="grid w-full gap-2">
                     <Textarea
-                      placeholder="Tell the AI what to change..."
+                      placeholder="告诉GPT要改变什么..."
                       onChange={(e) => setUpdateInstruction(e.target.value)}
                       value={updateInstruction}
                     />
                     <div className="flex justify-between items-center gap-x-2">
                       <div className="font-500 text-xs text-slate-700">
-                        Include screenshot of current version?
+                        包括当前版本的屏幕截图?
                       </div>
                       <Switch
                         checked={shouldIncludeResultImage}
                         onCheckedChange={setShouldIncludeResultImage}
                       />
                     </div>
-                    <Button onClick={doUpdate}>Update</Button>
+                    <Button onClick={doUpdate}>更新</Button>
                   </div>
                   <div className="flex items-center gap-x-2 mt-2">
                     <Button
                       onClick={downloadCode}
                       className="flex items-center gap-x-2"
                     >
-                      <FaDownload /> Download
+                      <FaDownload /> 下载
                     </Button>
                     <Button
                       onClick={reset}
                       className="flex items-center gap-x-2"
                     >
                       <FaUndo />
-                      Reset
+                      重置
                     </Button>
                   </div>
                 </div>
@@ -251,7 +238,7 @@ function App() {
                     />
                   </div>
                   <div className="text-gray-400 uppercase text-sm text-center mt-1">
-                    Original Screenshot
+                    原始图片
                   </div>
                 </div>
                 <div className="bg-gray-400 px-4 py-2 rounded text-sm hidden">
@@ -290,14 +277,14 @@ function App() {
               <div className="flex justify-end mr-8 mb-4">
                 <TabsList>
                   <TabsTrigger value="desktop" className="flex gap-x-2">
-                    <FaDesktop /> Desktop
+                    <FaDesktop /> PC端
                   </TabsTrigger>
                   <TabsTrigger value="mobile" className="flex gap-x-2">
-                    <FaMobile /> Mobile
+                    <FaMobile /> 手机端
                   </TabsTrigger>
                   <TabsTrigger value="code" className="flex gap-x-2">
                     <FaCode />
-                    Code
+                    代码
                   </TabsTrigger>
                 </TabsList>
               </div>

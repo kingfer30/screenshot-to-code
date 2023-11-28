@@ -35,13 +35,13 @@ function SettingsDialog({ settings, setSettings }: Props) {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="mb-4">Settings</DialogTitle>
+          <DialogTitle className="mb-4">设置</DialogTitle>
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <Label htmlFor="image-generation">
-            <div>DALL-E Placeholder Image Generation</div>
+            <div>DALL-E 占位符图像生成</div>
             <div className="font-light mt-2">
-              More fun with it but if you want to save money, turn it off.
+              它更有趣，但如果你想省钱，就关掉它。
             </div>
           </Label>
           <Switch
@@ -57,16 +57,16 @@ function SettingsDialog({ settings, setSettings }: Props) {
         </div>
         <div className="flex flex-col space-y-4">
           <Label htmlFor="openai-api-key">
-            <div>OpenAI API key</div>
+            <div>果果API key</div>
             <div className="font-light mt-2 leading-relaxed">
-              Only stored in your browser. Never stored on servers. Overrides
-              your .env config.
+                仅存储在您的浏览器中，并不会存储在服务器上。 
+              <p>您可以在此购买API Keys <a className="underline" href="https://shop.aichat199.com/" target="_blank">ChatGPT4.0 API KEY</a> 或者QQ联系我 <a className="underline" href="https://t.me/aichat199https://wpa.qq.com/msgrd?v=3&uin=3513494459&site=qqq&menu=yes" target="_blank">@3513494459</a></p>
             </div>
           </Label>
 
           <Input
             id="openai-api-key"
-            placeholder="OpenAI API key"
+            placeholder="AI Guoguo API key"
             value={settings.openAiApiKey || ""}
             onChange={(e) =>
               setSettings((s) => ({
@@ -76,37 +76,10 @@ function SettingsDialog({ settings, setSettings }: Props) {
             }
           />
 
-          <Label htmlFor="screenshot-one-api-key">
-            <div>
-              ScreenshotOne API key (optional - only needed if you want to use
-              URLs directly instead of taking the screenshot yourself)
-            </div>
-            <div className="font-light mt-2 leading-relaxed">
-              Only stored in your browser. Never stored on servers.{" "}
-              <a
-                href="https://screenshotone.com?via=screenshot-to-code"
-                className="underline"
-                target="_blank"
-              >
-                Get 100 screenshots/mo for free.
-              </a>
-            </div>
-          </Label>
-
-          <Input
-            id="screenshot-one-api-key"
-            placeholder="ScreenshotOne API key"
-            value={settings.screenshotOneApiKey || ""}
-            onChange={(e) =>
-              setSettings((s) => ({
-                ...s,
-                screenshotOneApiKey: e.target.value,
-              }))
-            }
-          />
+          
 
           <Label htmlFor="editor-theme">
-            <div>Editor Theme</div>
+            <div>更改主题</div>
           </Label>
           <div>
             <Select // Use the custom Select component here
@@ -123,7 +96,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
         </div>
 
         <DialogFooter>
-          <DialogClose>Save</DialogClose>
+          <DialogClose>保存</DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

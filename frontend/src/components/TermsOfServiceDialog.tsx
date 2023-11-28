@@ -18,6 +18,7 @@ const TermsOfServiceDialog: React.FC<{
   const [email, setEmail] = React.useState("");
 
   const onSubscribe = async () => {
+    return true
     await fetch("https://backend.buildpicoapps.com/form", {
       method: "POST",
       headers: {
@@ -32,13 +33,13 @@ const TermsOfServiceDialog: React.FC<{
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle className="mb-2">
-            Enter your email to get started
+            输入您的邮箱以继续使用
           </AlertDialogTitle>
         </AlertDialogHeader>
 
         <div className="mb-2">
           <Input
-            placeholder="Email"
+            placeholder="邮箱"
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -47,25 +48,16 @@ const TermsOfServiceDialog: React.FC<{
         </div>
         <div className="flex items-center space-x-2">
           <span>
-            By providing your email, you consent to receiving occasional product
-            updates, and you accept the{" "}
+            通过提供您的电子邮件，即表示您同意接收不定期的产品更新，并且您接受{" "}
             <a
               href="https://a.picoapps.xyz/camera-write"
               target="_blank"
               className="underline"
             >
-              terms of service
+              服务条款
             </a>
             . <br />
             <br />
-            Prefer to run it yourself locally? This project is open source.{" "}
-            <a
-              href="https://github.com/abi/screenshot-to-code"
-              target="_blank"
-              className="underline"
-            >
-              Download the code and get started on Github.
-            </a>
           </span>
         </div>
 
@@ -74,13 +66,13 @@ const TermsOfServiceDialog: React.FC<{
             onClick={(e) => {
               if (!email.trim() || !email.trim().includes("@")) {
                 e.preventDefault();
-                toast.error("Please enter your email");
+                toast.error("请输入邮箱");
               } else {
                 onSubscribe();
               }
             }}
           >
-            Agree
+            同意
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
