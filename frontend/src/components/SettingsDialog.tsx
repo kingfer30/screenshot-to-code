@@ -57,16 +57,17 @@ function SettingsDialog({ settings, setSettings }: Props) {
         </div>
         <div className="flex flex-col space-y-4">
           <Label htmlFor="openai-api-key">
-            <div>OpenAI API key</div>
+            <div>AI Guoguo API key</div>
             <div className="font-light mt-2 leading-relaxed">
               Only stored in your browser. Never stored on servers. Overrides
-              your .env config.
+              your .env config. 
+              <p>You can purchase the key at <a className="underline" href="https://plati.market/itm/3999910" target="_blank">ChatGPT4.0 API KEY</a> or concat <a className="underline" href="https://t.me/aichat199" target="_blank">@aiguoguo</a></p>
             </div>
           </Label>
 
           <Input
             id="openai-api-key"
-            placeholder="OpenAI API key"
+            placeholder="AI Guoguo API key"
             value={settings.openAiApiKey || ""}
             onChange={(e) =>
               setSettings((s) => ({
@@ -76,34 +77,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
             }
           />
 
-          <Label htmlFor="screenshot-one-api-key">
-            <div>
-              ScreenshotOne API key (optional - only needed if you want to use
-              URLs directly instead of taking the screenshot yourself)
-            </div>
-            <div className="font-light mt-2 leading-relaxed">
-              Only stored in your browser. Never stored on servers.{" "}
-              <a
-                href="https://screenshotone.com?via=screenshot-to-code"
-                className="underline"
-                target="_blank"
-              >
-                Get 100 screenshots/mo for free.
-              </a>
-            </div>
-          </Label>
-
-          <Input
-            id="screenshot-one-api-key"
-            placeholder="ScreenshotOne API key"
-            value={settings.screenshotOneApiKey || ""}
-            onChange={(e) =>
-              setSettings((s) => ({
-                ...s,
-                screenshotOneApiKey: e.target.value,
-              }))
-            }
-          />
+          
 
           <Label htmlFor="editor-theme">
             <div>Editor Theme</div>
