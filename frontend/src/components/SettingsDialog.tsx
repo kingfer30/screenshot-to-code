@@ -59,8 +59,9 @@ function SettingsDialog({ settings, setSettings }: Props) {
           <Label htmlFor="openai-api-key">
             <div>果果API key</div>
             <div className="font-light mt-2 leading-relaxed">
-                仅存储在您的浏览器中，并不会存储在服务器上。 
+              仅存储在您的浏览器中，并不会存储在服务器上。
               <p>您可以在此购买API Keys <a className="underline" href="https://shop.aichat199.com/" target="_blank">ChatGPT4.0 API KEY</a> 或者QQ联系我 <a className="underline" href="https://t.me/aichat199https://wpa.qq.com/msgrd?v=3&uin=3513494459&site=qqq&menu=yes" target="_blank">@3513494459</a></p>
+              <p className="font-semibold text-red-500">请注意，您购买的API Key需带有gpt4-vision模型，否则将不可使用</p>
             </div>
           </Label>
 
@@ -76,7 +77,7 @@ function SettingsDialog({ settings, setSettings }: Props) {
             }
           />
 
-          
+
 
           <Label htmlFor="editor-theme">
             <div>更改主题</div>
